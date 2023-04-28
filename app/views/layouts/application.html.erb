@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">Bookers</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to user_path(current_user),class:"nav-link text-light" do %>
+                  <i class="fas fa-home" style="color: #ffffff;"></i>
+                  Home
+                <% end %>
+              </li>
+              <li>
+                <%= link_to users_path,class:"nav-link text-light" do  %>
+                  <i class="fas fa-users" style="color: #ffffff;"></i>
+                  Users
+                <% end %>
+              </li>
+              <li>
+                <%= link_to books_path,class:"nav-link text-light" do  %>
+                  <i class="fas fa-book-open" style="color: #ffffff;"></i>
+                  Books
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete,class:"nav-link text-light" do  %>
+                  <i class="fas fa-sign-out-alt" style="color: #ffffff;"></i>
+                  Log out
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to root_path do %>
+                <i class="fas fa-home" style="color: #ffffff;"></i>
+                Home
+                <% end %>
+              </li>
+              <li>
+                <%= link_to about_path  do %>
+                <i class="fas fa-link" style="color: #ffffff;"></i>
+                About
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus" style="color: #ffffff;"></i>
+                Sign up
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_session_path do %>
+                <i class="fas fa-sign-in-alt" style="color: #ffffff;"></i>
+                Log in
+                <% end %>
+              </li>
+            <% end %>
+            </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+    <%= yield %>
+    </main>
+    
+  
+    <hooter>
+      <div class = "container mt-5">
+        <div class = "row">
+          <div class = "mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </hooter>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
