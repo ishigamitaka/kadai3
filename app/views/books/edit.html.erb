@@ -2,6 +2,14 @@
   <div class="row">
     <div class="col-cm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>Editing Book</h2>
+      <% if @book.errors.any? %>
+      <%= @book.errors.count %>件のerrorが発生しました
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
       <%= form_with model: @book, method: :patch do |f| %>
       <label>Titel</label>
       <div class="form-group">
@@ -15,9 +23,13 @@
         <%= f.submit 'Update Book' %>
       </div>
       <% end %>
-      <%= link_to user_path %>
+      <%= link_to book_path(@book.id) do %>
+        Show
+      <% end %>
       |
-      <%= link_to books_path %>
+      <%= link_to books_path do %>
+        Back
+      <% end %>
     </div>
   </div>
 </div>
